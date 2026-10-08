@@ -148,31 +148,6 @@ button {
   gap: 18px;
 }
 
-.burger-card-wrapper {
-  overflow: hidden;
-  max-height: 400px;
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    max-height 0.55s ease,
-    opacity 0.4s ease,
-    transform 0.55s ease;
-}
-
-.burger-list.show-less .extra-burger {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
-
-.burger-list.show-all .extra-burger {
-  max-height: 400px;
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
 .burger-card {
   width: 100%;
   border: 0;
@@ -228,7 +203,8 @@ button {
   color: #d94b2b;
 }
 
-.see-more-button {
+.see-more-button,
+.see-less-button {
   display: block;
   margin: 30px auto 0;
   border: 0;
@@ -238,6 +214,13 @@ button {
   color: white;
   font-weight: 700;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.see-more-button:hover,
+.see-less-button:hover {
+  background: #3e2f29;
+  transform: translateY(-2px);
 }
 
 .modal-overlay,

@@ -59,7 +59,7 @@ function BurgerPage() {
     <main className="burger-page">
       <header className="burger-header">
         <div>
-          <h1>Burger App</h1>
+          <h1>🍔 Burger App</h1>
           <p>Choose your favorite burger</p>
         </div>
 
@@ -68,7 +68,7 @@ function BurgerPage() {
           className="cart-top-button"
           onClick={() => setShowCart(true)}
         >
-          Your Cart
+          🛒 Cart
           {cartCount > 0 && <span>{cartCount}</span>}
         </button>
       </header>
@@ -94,14 +94,24 @@ function BurgerPage() {
         onBurgerClick={setSelectedBurger}
       />
 
-      {!showAll && (
-        <button
-          type="button"
-          className="see-more-button"
-          onClick={() => setShowAll(true)}
-        >
-          SEE MORE
-        </button>
+      {burgers.length > 8 && (
+        showAll ? (
+          <button
+            type="button"
+            className="see-more-button see-less-button"
+            onClick={() => setShowAll(false)}
+          >
+            SEE LESS
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="see-more-button"
+            onClick={() => setShowAll(true)}
+          >
+            SEE MORE
+          </button>
+        )
       )}
 
       {selectedBurger && (

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function BurgerDetails({ burger, onBack }) {
+function BurgerDetails({ burger, onClose, onAddToCart }) {
   const [quantity, setQuantity] = useState(1)
 
   const decreaseQuantity = () => {
@@ -12,26 +12,24 @@ function BurgerDetails({ burger, onBack }) {
   }
 
   return (
-    <main className="details-page">
-      <button type="button" className="back-button" onClick={onBack}>
-        ← Back to Burgers
-      </button>
+    <div className="modal-overlay">
+      <section className="burger-details-modal">
+        <button type="button" className="close-button" onClick={onClose}>
+          ×
+        </button>
 
-      <section className="burger-details">
-        <div className="details-image">{burger.image}</div>
+        <div className="details-image"><img src={burger.imageUrl} alt={burger.name} /></div>
 
         <div className="details-content">
           <span className="details-label">BURGER DETAILS</span>
           <h1>{burger.name}</h1>
 
-          <p className="details-description">
-            {burger.description}
-          </p>
+          <p className="details-description">{burger.description}</p>
 
           <div className="details-info">
-            <p>⭐ <strong>Rating:</strong> {burger.rating} / 5</p>
-            <p>📦 <strong>Stocks:</strong> {burger.stocks}</p>
-            <p>💰 <strong>Price:</strong> ₱{burger.price}</p>
+            <p><strong>Rating:</strong> {burger.rating} / 5</p>
+            <p><strong>Stocks:</strong> {burger.stocks}</p>
+            <p><strong>Price:</strong> ₱{burger.price}</p>
           </div>
 
           <div className="quantity-section">
@@ -43,12 +41,16 @@ function BurgerDetails({ burger, onBack }) {
             </div>
           </div>
 
-          <button type="button" className="cart-button">
-            ADD TO CART 🛒
+          <button
+            type="button"
+            className="cart-button"
+            onClick={() => onAddToCart(burger, quantity)}
+          >
+            ADD TO CART 
           </button>
         </div>
       </section>
-    </main>
+    </div>
   )
 }
 

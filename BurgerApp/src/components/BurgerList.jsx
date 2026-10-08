@@ -5,7 +5,7 @@ function BurgerList({ burgers, onBurgerClick }) {
     <section className="burger-list-section">
       <div className="section-heading">
         <h2>Our Burgers</h2>
-        <span>{burgers.length} burgers</span>
+        <span>{burgers.length} shown</span>
       </div>
 
       <div className="burger-list">
